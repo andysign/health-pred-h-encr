@@ -4,6 +4,8 @@
 
 Homomorphic Encryption ( HE ) is a type of encryption that allows you to perform operations on encrypted values and produce encrypted outputs in such a way so that the outputs, if decrypted, will be equal to the output of the same set of operations performed on the un-encrypted values.
 
+![img](./image-screenshot.png)
+
 ---
 
 ## Execute Once Before All Launch
