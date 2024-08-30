@@ -1,3 +1,8 @@
 .venv
 .ipynb_checkpoints
 __pycache__/
+data/Testing*.csv
+data/Training*.csv
+deployment_files/client.zip
+deployment_files/server.zip
+deployment_files/versions.json
