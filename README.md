@@ -8,6 +8,12 @@ Homomorphic Encryption ( HE ) is a type of encryption that allows you to perform
 
 ---
 
+## Run
+
+```sh
+./start.sh
+```
+
 ## Execute Once Before All Launch
 
 Create a virtual env and activate it:
