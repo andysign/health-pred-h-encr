@@ -18,21 +18,19 @@ def download_data():
     os.makedirs('./data', exist_ok=True);
 
     url_domain = 'https://raw.githubusercontent.com'
-    url_folders_path = 'anujdutt9/Disease-Prediction-from-Symptoms/master/dataset'
+    url_folders_path = \
+        'anujdutt9/Disease-Prediction-from-Symptoms/master/dataset'
     url_one = f"{url_domain}/{url_folders_path}/training_data.csv"
     url_two = f"{url_domain}/{url_folders_path}/test_data.csv"
 
     result_one = requests.get(url_one)
     assert result_one.ok == True
-    with open(f'./data/Training.csv', 'wb') as file: file.write(result_one.content)
-
-    # print(f"Downloaded github.com/anujdutt9/Disease-Prediction-from-Symptoms/tree/master/dataset/training_data.csv to ./data/")
+    with open(f'./data/Training.csv', 'wb') as f: f.write(result_one.content)
 
     result_two = requests.get(url_two)
     assert result_two.ok == True
-    with open(f'./data/Testing.csv', 'wb') as file: file.write(result_two.content)
+    with open(f'./data/Testing.csv', 'wb') as f: f.write(result_two.content)
 
-    # print(f"Downloaded github.com/anujdutt9/Disease-Prediction-from-Symptoms/tree/master/dataset/test_data.csv to./data/")
     return (len(result_one.content), len(result_two.content))
 
 # DataPreProcessing
@@ -119,13 +117,6 @@ def prepare_data():
 download_data()
 
 df_train, df_test = prepare_data()
-
-# # Data files location
-# TRAINING_FILE_NAME = "./data/Training_preprocessed.csv"
-# TESTING_FILE_NAME = "./data/Testing_preprocessed.csv"
-# # Load data
-# df_train = pd.read_csv(TRAINING_FILE_NAME)
-# df_test = pd.read_csv(TESTING_FILE_NAME)
 
 # Split the data into X_train, y_train, X_test_, y_test sets
 TARGET_COLUMN = ["prognosis_encoded", "prognosis"]
