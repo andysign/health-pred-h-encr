@@ -32,3 +32,22 @@ python dev.py
 After running this command, the two folders will be populated, more exactly **`./data/`** ( with **`Testing.csv`**, **`Testing_preprocessed.csv`**, **`Training.csv`** and **`Training_preprocessed.csv`** ) and **`./deployment_files/`** ( with **`client.zip`**, **`server.zip`** and **`versions.json`** ).
 
 ---
+
+## Launch The Application
+
+In your terminal, run:
+
+```sh
+source .venv/bin/activate
+python3 app.py
+```
+
+---
+
+## Interacting With The Application
+
+Open the given URL link ( search for a line like Running on local URL: **`http://127.0.0.1:7860/`** ).
+
+---
+
+---
