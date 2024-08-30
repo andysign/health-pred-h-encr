@@ -506,7 +506,7 @@ if __name__ == "__main__":
         gr.Markdown(
             """
             <p align="center">
-                <img width=200 src="https://user-images.githubusercontent.com/5758427/197816413-d9cddad3-ba38-4793-847d-120975e1da11.png">
+                <img width=200 src="https://i.imgur.com/JHf0mTx.png">
             </p>
             """)
         gr.Markdown()
@@ -766,4 +766,4 @@ if __name__ == "__main__":
             ],
         )
 
-        demo.launch(port=7860)
+        demo.launch() # DEFAULT PORT 7860
