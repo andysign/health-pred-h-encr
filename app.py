@@ -2,7 +2,7 @@ import subprocess
 import time
 from typing import Dict, List, Tuple
 
-import gradio as gr  # pylint: disable=import-error
+import gradio as gr
 import numpy as np
 import pandas as pd
 import requests
@@ -25,7 +25,8 @@ from utils import (
 from concrete.ml.deployment import FHEModelClient
 
 subprocess.Popen(["uvicorn", "server:app"], cwd=CURRENT_DIR)
-time.sleep(3)
+time.sleep(4)
+
 
 # pylint: disable=c-extension-no-member,invalid-name
 
@@ -53,13 +54,13 @@ def display_default_symptoms_fn(default_disease: str) -> Dict:
         Dict: The according symptoms
     """
     df = pd.read_csv(TRAINING_FILENAME)
-    df_filtred = df[df[TARGET_COLUMNS[1]] == default_disease]
+    df_filtered = df[df[TARGET_COLUMNS[1]] == default_disease]
 
     return {
         default_symptoms: gr.update(
             visible=True,
             value=pretty_print(
-                df_filtred.columns[df_filtred.eq(1).any()].to_list(), delimiter=", "
+                df_filtered.columns[df_filtered.eq(1).any()].to_list(), delimiter=", "
             ),
         )
     }
@@ -341,7 +342,7 @@ def run_fhe_fn(user_id: str) -> Dict:
 
 
 def get_output_fn(user_id: str, user_symptoms: np.ndarray) -> Dict:
-    """Retreive the encrypted data from the server.
+    """Retrieve the encrypted data from the server.
 
     Args:
         user_id (str): The current user's ID
@@ -384,7 +385,7 @@ def get_output_fn(user_id: str, user_symptoms: np.ndarray) -> Dict:
 def decrypt_fn(
     user_id: str, user_symptoms: np.ndarray, *checked_symptoms, threshold: int = 0.5
 ) -> Dict:
-    """Dencrypt the data on the `Client Side`.
+    """Decrypt the data on the `Client Side`.
 
     Args:
         user_id (str): The current user's ID
@@ -581,10 +582,10 @@ if __name__ == "__main__":
                 default_symptoms = gr.Textbox(label="Related Symptoms:", visible=False)
         # User vector symptoms encoded in oneHot representation
         one_hot_vect = gr.Textbox(visible=False)
-        # Submit botton
+        # Submit button
         submit_btn = gr.Button("Submit")
-        # Clear botton
-        clear_button = gr.Button("Reset Space 🔁", visible=False)
+        # Clear button
+        clear_button = gr.Button("Reset Space 🔁", visible=True)
 
         default_disease_box.change(
             fn=display_default_symptoms_fn, inputs=[default_disease_box], outputs=[default_symptoms]
@@ -654,7 +655,7 @@ if __name__ == "__main__":
         )
         error_box4 = gr.Textbox(label="Error ❌", visible=False)
 
-        with gr.Row().style(equal_height=False):
+        with gr.Row(equal_height=False):
             with gr.Column(scale=4):
                 send_input_btn = gr.Button("Send data")
             with gr.Column(scale=1):
@@ -697,7 +698,7 @@ if __name__ == "__main__":
         error_box6 = gr.Textbox(label="Error ❌", visible=False)
 
         # Step 4.1: Data transmission
-        with gr.Row().style(equal_height=True):
+        with gr.Row(equal_height=True):
             with gr.Column(scale=4):
                 get_output_btn = gr.Button("Get data")
             with gr.Column(scale=1):
