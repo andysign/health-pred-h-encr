@@ -27,6 +27,7 @@ from concrete.ml.deployment import FHEModelClient
 subprocess.Popen(["uvicorn", "server:app"], cwd=CURRENT_DIR)
 time.sleep(4)
 
+
 # pylint: disable=c-extension-no-member,invalid-name
 
 
@@ -654,7 +655,7 @@ if __name__ == "__main__":
         )
         error_box4 = gr.Textbox(label="Error ❌", visible=False)
 
-        with gr.Row().style(equal_height=False):
+        with gr.Row(equal_height=False):
             with gr.Column(scale=4):
                 send_input_btn = gr.Button("Send data")
             with gr.Column(scale=1):
@@ -697,7 +698,7 @@ if __name__ == "__main__":
         error_box6 = gr.Textbox(label="Error ❌", visible=False)
 
         # Step 4.1: Data transmission
-        with gr.Row().style(equal_height=True):
+        with gr.Row(equal_height=True):
             with gr.Column(scale=4):
                 get_output_btn = gr.Button("Get data")
             with gr.Column(scale=1):
