@@ -385,7 +385,7 @@ def get_output_fn(user_id: str, user_symptoms: np.ndarray) -> Dict:
 def decrypt_fn(
     user_id: str, user_symptoms: np.ndarray, *checked_symptoms, threshold: int = 0.5
 ) -> Dict:
-    """Dencrypt the data on the `Client Side`.
+    """Decrypt the data on the `Client Side`.
 
     Args:
         user_id (str): The current user's ID
