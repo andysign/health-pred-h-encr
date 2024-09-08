@@ -53,13 +53,13 @@ def display_default_symptoms_fn(default_disease: str) -> Dict:
         Dict: The according symptoms
     """
     df = pd.read_csv(TRAINING_FILENAME)
-    df_filtred = df[df[TARGET_COLUMNS[1]] == default_disease]
+    df_filtered = df[df[TARGET_COLUMNS[1]] == default_disease]
 
     return {
         default_symptoms: gr.update(
             visible=True,
             value=pretty_print(
-                df_filtred.columns[df_filtred.eq(1).any()].to_list(), delimiter=", "
+                df_filtered.columns[df_filtered.eq(1).any()].to_list(), delimiter=", "
             ),
         )
     }
@@ -341,7 +341,7 @@ def run_fhe_fn(user_id: str) -> Dict:
 
 
 def get_output_fn(user_id: str, user_symptoms: np.ndarray) -> Dict:
-    """Retreive the encrypted data from the server.
+    """Retrieve the encrypted data from the server.
 
     Args:
         user_id (str): The current user's ID
@@ -581,10 +581,10 @@ if __name__ == "__main__":
                 default_symptoms = gr.Textbox(label="Related Symptoms:", visible=False)
         # User vector symptoms encoded in oneHot representation
         one_hot_vect = gr.Textbox(visible=False)
-        # Submit botton
+        # Submit button
         submit_btn = gr.Button("Submit")
-        # Clear botton
-        clear_button = gr.Button("Reset Space 🔁", visible=False)
+        # Clear button
+        clear_button = gr.Button("Reset Space 🔁", visible=True)
 
         default_disease_box.change(
             fn=display_default_symptoms_fn, inputs=[default_disease_box], outputs=[default_symptoms]
