@@ -25,7 +25,7 @@ from utils import (
 from concrete.ml.deployment import FHEModelClient
 
 subprocess.Popen(["uvicorn", "server:app"], cwd=CURRENT_DIR)
-time.sleep(3)
+time.sleep(4)
 
 # pylint: disable=c-extension-no-member,invalid-name
 
