@@ -2,7 +2,7 @@ import subprocess
 import time
 from typing import Dict, List, Tuple
 
-import gradio as gr  # pylint: disable=import-error
+import gradio as gr
 import numpy as np
 import pandas as pd
 import requests
